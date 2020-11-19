@@ -18,8 +18,7 @@ function generateAddress(addressArray){
     let curStr=Object.keys(addressArray[i]).filter(key => addressArray[i][key] != "")
     .map(key => `${key}=${addressArray[i][key]}`);
 
-    result += `<u>The ${i + 1} address is: </u><br>${curStr.join("<br>")}`
-    result += "<br><br>";
+    result += `<strong>The ${i + 1} address is: </strong>${curStr.map(item=>`<p>${item},</p>`).join("")}`
   }
   return result;
 }
@@ -38,7 +37,7 @@ function displayResults(responseJson) {
       $('#results-list').append(
         `<li><h3>${responseJson.data[i].fullName}</h3>
         <p><a href=${responseJson.data[i].url} target=_black>Click here to explore</a></p>
-        <p><em>Description: </em><br/>${responseJson.data[i].description}</p> 
+        <p><em>Description: </em></p><p>${responseJson.data[i].description}</p> 
         <div>
           <h4>Address: </h4>
           <p>${address}</p> 
